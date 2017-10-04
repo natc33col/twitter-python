@@ -8,14 +8,14 @@ api = twitter.Api(consumer_key='inset your key here',
                       access_token_secret='insert your key here')
 
 random_stater = ["A ", "The "]
-random_second = ["Box ", "Apple ", "Bluebird ", "North Korean "]
+random_second = ["Box ", "Apple ", "Bluebird ", "North Korean ", "Donnie Trump ", "Theresa May "]
 random_third = ["walked ", "jumped ", "ran ", "flew "]
 random_fourth = ["herself ", "himself ", "themself "]
-random_fith = ["to the White House.", "to the chippy", "to the pub", "to the off lincese."]
+random_fith = ["to the White House.", "to the chippy", "to the pub", "to the off licence."]
 
 print("welcome to twitter app. what you want to do?")
 while True:
-    print("A: Send status message. B: Make a new friend! C: Send a random message! D: List friends")
+    print("A: Send status message! B: Make a new friend! C: Send a random message! D: List friends! E: See a User's id!")
     user_action = raw_input(": ")
 
     if user_action == "A":
@@ -48,8 +48,11 @@ while True:
         friend_list_2 = api.GetFriends()
         print(friend_list_2)
 
+    elif user_action == "E":
+        print(" ")
+        #working on it
 
 
-    elif user_action != "A" or user_action != "B" or user_action != "C" or user_action != "D":
+    elif user_action != "A" or user_action != "B" or user_action != "C" or user_action != "D" or user_action != "E":
         print("That is not an option. Please choose something else.")
         time.sleep(1)
