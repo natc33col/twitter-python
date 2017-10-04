@@ -15,7 +15,7 @@ random_fith = ["to the White House.", "to the chippy", "to the pub", "to the off
 
 print("welcome to twitter app. what you want to do?")
 while True:
-    print("A: Send status message. B: Make a new friend! C: Send a random message!")
+    print("A: Send status message. B: Make a new friend! C: Send a random message! D: List friends")
     user_action = raw_input(": ")
 
     if user_action == "A":
@@ -27,9 +27,12 @@ while True:
 
 
     elif user_action == "B":
-        print("not working")
-        time.sleep(1)
+        print("What is the user id of the person you want to follow? The uid must be perfect, or it wont work!")
+        user_follow = raw_input(": ")
+        api.CreateFriendship(user_follow)
+        friend_list = api.GetFriends()
 
+        time.sleep(1)
 
     elif user_action == "C":
         one = (random.choice(random_stater))
@@ -41,8 +44,12 @@ while True:
         print(status.text)
         time.sleep(1)
 
+    elif user_action == "D":
+        friend_list_2 = api.GetFriends()
+        print(friend_list_2)
 
-    elif user_action != "A" or user_action != "B" or user_action != "C":
+
+
+    elif user_action != "A" or user_action != "B" or user_action != "C" or user_action != "D":
         print("That is not an option. Please choose something else.")
         time.sleep(1)
-
