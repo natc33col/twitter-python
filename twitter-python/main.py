@@ -7,9 +7,6 @@ api = twitter.Api(consumer_key='inset your key here',
                       access_token_key='insert your key here',
                       access_token_secret='insert your key here')
 
-
-
-print("welcome to twitter app. what you want to do?")
 random_stater = ["A ", "The "]
 random_second = ["Box ", "Apple ", "Bluebird ", "North Korean "]
 random_third = ["walked ", "jumped ", "ran ", "flew "]
