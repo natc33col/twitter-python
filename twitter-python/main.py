@@ -15,23 +15,31 @@ random_fith = ["to the White House.", "to the chippy", "to the pub", "to the off
 
 print("welcome to twitter app. what you want to do?")
 while True:
-    print("A: Send status message! B: Make a new friend! C: Send a random message! D: List friends! E: See a User's id!")
+    print("A: Send status message! B: Make a new friend! C: Send a random message! D: List friends! E: Direct message someone!")
     user_action = raw_input(": ")
 
     if user_action == "A":
         text_to_send = raw_input("Type in message: ")
-
-        status = api.PostUpdate(text_to_send)
-        time.sleep(1)
-        print(status.text)
-
+        def send_status():
+            try:
+                status = api.PostUpdate(text_to_send)
+                print(status.text)
+            except:
+                print("Sorry, the action failed.")
+            time.sleep(1)
+        if len(text_to_send) < 140:
+            send_status()
+        elif len(text_to_send) > 140:
+            print("Sorry, your message is over 140 characters.")
 
     elif user_action == "B":
         print("What is the user id of the person you want to follow? The uid must be perfect, or it wont work!")
         user_follow = raw_input(": ")
-        api.CreateFriendship(user_follow)
-        friend_list = api.GetFriends()
-
+        try:
+            api.CreateFriendship(user_follow)
+            friend_list = api.GetFriends()
+        except:
+            print("Sorry, the action failed.")
         time.sleep(1)
 
     elif user_action == "C":
@@ -40,18 +48,29 @@ while True:
         three = (random.choice(random_third))
         four = (random.choice(random_fourth))
         five =  (random.choice(random_fith))
-        status = api.PostUpdate(one + two + three + four + five)
-        print(status.text)
+        try:
+            status = api.PostUpdate(one + two + three + four + five)
+            print(status.text)
+        except:
+            print("Sorry, the action failed.")
         time.sleep(1)
 
     elif user_action == "D":
-        friend_list_2 = api.GetFriends()
-        print(friend_list_2)
+        try:
+            friend_list_2 = api.GetFriends()
+            print(friend_list_2)
+        except:
+            print("Sorry, the action failed.")
 
     elif user_action == "E":
-        print(" ")
-        #working on it
-
+        print("Enter message text and recipant.")
+        prvt_msg_txt = raw_input("Msg txt: ")
+        msg_rcpt_id = raw_input("Rcpt uid: ")
+        try:
+            api.PostDirectMessage(prvt_msg_txt, msg_rcpt_id)
+        except:
+            print("Sorry, the action failed.")
+        time.sleep(1)
 
     elif user_action != "A" or user_action != "B" or user_action != "C" or user_action != "D" or user_action != "E":
         print("That is not an option. Please choose something else.")
