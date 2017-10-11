@@ -15,7 +15,7 @@ random_fith = ["to the White House.", "to the chippy", "to the pub", "to the off
 
 print("welcome to twitter app. what you want to do?")
 while True:
-    print("A: Send status message! B: Make a new friend! C: Send a random message! D: List friends! E: Direct message someone!")
+    print("A: Send status message! B: Make a new friend! C: Send a random message! D: List friends! E: Direct message someone! F: Check for new friends!")
     user_action = raw_input(": ")
 
     if user_action == "A":
@@ -71,6 +71,18 @@ while True:
         except:
             print("Sorry, the action failed.")
         time.sleep(1)
+
+    elif user_action == "F":
+        print("Checking for incoming friendships...")
+        try:
+            isfriendexist = api.IncomingFriendship()
+            if len(isfriendexist) < 0.5:
+                print("No new frienship request.")
+            elif len(isfriendexist) > 0.5:
+                print("new friendships from:" + isfriendexist)
+        except:
+            print("Sorry, the action failed.")
+
 
     elif user_action != "A" or user_action != "B" or user_action != "C" or user_action != "D" or user_action != "E":
         print("That is not an option. Please choose something else.")
