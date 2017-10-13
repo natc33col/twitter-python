@@ -15,7 +15,7 @@ random_fith = ["to the White House.", "to the chippy", "to the pub", "to the off
 
 print("welcome to twitter app. what you want to do?")
 while True:
-    print("A: Send status message! B: Make a new friend! C: Send a random message! D: List friends! E: Direct message someone! F: Check for new friends!")
+    print("A: Send status message! B: Make a new friend! C: Send a random message! D: List friends! E: Direct message someone! F: Check for new friends! Quit to quit.")
     user_action = raw_input(": ")
 
     if user_action == "A":
@@ -83,7 +83,9 @@ while True:
         except:
             print("Sorry, the action failed.")
 
-
-    elif user_action != "A" or user_action != "B" or user_action != "C" or user_action != "D" or user_action != "E":
+    elif user_action == "Quit" or user_action == "quit":
+        break
+        
+    elif user_action != "A" or user_action != "B" or user_action != "C" or user_action != "D" or user_action != "E" or user_action != "F" or user_action != "Quit" or user_action !="quit":
         print("That is not an option. Please choose something else.")
         time.sleep(1)
