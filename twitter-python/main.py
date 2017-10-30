@@ -1,4 +1,7 @@
 import twitter
+import random
+import time
+import getpass
 
 api = twitter.Api()
 
@@ -8,14 +11,25 @@ api = twitter.Api(consumer_key='inset your key here',
                       access_token_secret='insert your key here')
 
 random_stater = ["A ", "The "]
-random_second = ["Box ", "Apple ", "Bluebird ", "North Korean ", "Donnie Trump ", "Theresa May "]
+random_second = ["Box ", "Apple ", "Bluebird ", "North Korean ", "Donnie Trump ", "Theresa May ", "Boris Johnson "]
 random_third = ["walked ", "jumped ", "ran ", "flew "]
 random_fourth = ["herself ", "himself ", "themself "]
 random_fith = ["to the White House.", "to the chippy", "to the pub", "to the off licence."]
 
-print("welcome to twitter app. what you want to do?")
+y = 0
+
 while True:
-    print("A: Send status message! B: Make a new friend! C: Send a random message! D: List friends! E: Direct message someone! F: Check for new friends! Quit to quit.")
+    if y == 0:
+        while True:
+            passcheck = getpass.getpass(prompt='Password: ', stream=None)
+            if passcheck == password123:
+                y = 1
+                print("welcome to twitter app. what you want to do?")
+                break
+            elif passcheck != password123:
+                print("Incorrect Password. Please Try Again")
+
+    print("A: Send status message! B: Make a new friend! C: Send a random message! D: List friends! E: Direct message someone! F: Check if you have any direct messages! G: Check for new friends! Quit to quit.")
     user_action = raw_input(": ")
 
     if user_action == "A":
@@ -73,6 +87,14 @@ while True:
         time.sleep(1)
 
     elif user_action == "F":
+        print("Checking for new direct messages...")
+        try:
+            #api.GetDirectMessages()
+            print("work in progress")
+        except:
+            print("The action could not be completed.")
+
+    elif user_action == "G":
         print("Checking for incoming friendships...")
         try:
             isfriendexist = api.IncomingFriendship()
@@ -85,7 +107,6 @@ while True:
 
     elif user_action == "Quit" or user_action == "quit":
         break
-        
     elif user_action != "A" or user_action != "B" or user_action != "C" or user_action != "D" or user_action != "E" or user_action != "F" or user_action != "Quit" or user_action !="quit":
         print("That is not an option. Please choose something else.")
         time.sleep(1)
